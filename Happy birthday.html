@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>生日快乐</title>
+<title>🎉🎂生日快乐🎂🎉</title>
  
 <style>
 html,body{
@@ -11,8 +11,8 @@ html,body{
   height:100%;
   overflow:hidden;
   background:#000;
-  background: url("image/timg7.jpeg") no-repeat;
-  background-size: 100% 50%;
+  background: url("image/by.jpeg") no-repeat;
+  background-size: 100% 100%;
 }
  
 #canvas{
@@ -27,7 +27,8 @@ html,body{
  
 <canvas id="canvas"></canvas><script>
 function initVars(){
- 
+  // var audio = new Audio("image/music.mp3");
+  // audio.play();
   pi=Math.PI;
   ctx=canvas.getContext("2d");
   canvas.width=canvas.clientWidth;
@@ -43,19 +44,19 @@ function initVars(){
   s="https://cantelope.org/NYE/";
   for(i=1;i<=10;++i){
     sparkPic=new Image();
-    sparkPic.src = i===5? "image/6.png" : (i===7? "image/srkl.png" : s+"spark"+i+".png");
+    sparkPic.src = i===5? "image/srkl.png" : s+"spark"+i+".png";
     // sparkPic.src=s+"spark"+i+".png";
     sparkPics.push(sparkPic);
   }
   sparks=new Array();
-  // pow1=new Audio(s+"pow1.ogg");
-  // pow2=new Audio(s+"pow2.ogg");
-  // pow3=new Audio(s+"pow3.ogg");
-  // pow4=new Audio(s+"pow4.ogg");
-  pow1=new Audio("audio.mp3");
-  pow2=new Audio("audio.mp3");
-  pow3=new Audio("audio.mp3");
-  pow4=new Audio("audio.mp3");
+  pow1=new Audio(s+"pow1.ogg");
+  pow2=new Audio(s+"pow2.ogg");
+  pow3=new Audio(s+"pow3.ogg");
+  pow4=new Audio(s+"pow4.ogg");
+  // pow1=new Audio("audio.mp3");
+  // pow2=new Audio("audio.mp3");
+  // pow3=new Audio("audio.mp3");
+  // pow4=new Audio("audio.mp3");
   frames = 0;
 }
  
@@ -153,14 +154,14 @@ function splode(x,y,z){
     sparks.push(spark);
   }
   switch(parseInt(Math.random()*4)){
-    // case 0: pow=new Audio(s+"pow1.ogg"); break;
-    // case 1: pow=new Audio(s+"pow2.ogg"); break;
-    // case 2: pow=new Audio(s+"pow3.ogg"); break;
-    // case 3: pow=new Audio(s+"pow4.ogg"); break;
-    case 0: pow=new Audio("audio.mp3"); break;
-    case 1: pow=new Audio("audio.mp3"); break;
-    case 2: pow=new Audio("audio.mp3"); break;
-    case 3: pow=new Audio("audio.mp3"); break;
+    case 0: pow=new Audio(s+"pow1.ogg"); break;
+    case 1: pow=new Audio(s+"pow2.ogg"); break;
+    case 2: pow=new Audio(s+"pow3.ogg"); break;
+    case 3: pow=new Audio(s+"pow4.ogg"); break;
+    // case 0: pow=new Audio("audio.mp3"); break;
+    // case 1: pow=new Audio("audio.mp3"); break;
+    // case 2: pow=new Audio("audio.mp3"); break;
+    // case 3: pow=new Audio("audio.mp3"); break;
   }
   d=Math.sqrt((x-playerX)*(x-playerX)+(y-playerY)*(y-playerY)+(z-playerZ)*(z-playerZ));
   pow.volume=1.5/(1+d/10);
@@ -235,7 +236,9 @@ function draw(){
   
   ctx.clearRect(0,0,cx*2,cy*2);
   
-  ctx.fillStyle="#ff8";
+  // ctx.fillStyle="#ff8";
+  ctx.fillStyle="#86F";
+  // ctx.fillStyle=rgb(30);
   for(i=-100;i<100;i+=3){
     for(j=-100;j<100;j+=4){
       x=i;z=j;y=25;
@@ -255,7 +258,8 @@ function draw(){
   for(i=0;i<seeds.length;++i){
     point=rasterizePoint(seeds[i].x,seeds[i].y,seeds[i].z);
     if(point.d!=-1){
-      size=200/(1+point.d);
+      // size=200/(1+point.d);
+      size=400/(1+point.d);
       ctx.fillRect(point.x-size/2,point.y-size/2,size,size);
     }
   }
