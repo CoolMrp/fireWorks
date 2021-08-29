@@ -50,6 +50,9 @@ background-image: radial-gradient(#ffeded, #ffc7c7);
   transform: rotate(45deg);
   animation: heart 1s ease-in infinite;
 }
+.heart > img{
+  height: 100%;
+}
 .heart::before,
 .heart::after{
   content:'';
